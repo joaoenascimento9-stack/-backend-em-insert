@@ -25,5 +25,14 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.7"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/developercorrea-dev/backend-em-insert.git"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/developercorrea-dev/backend-em-insert/issues"
+  },
+  "homepage": "https://github.com/developercorrea-dev/backend-em-insert#readme"
 }
