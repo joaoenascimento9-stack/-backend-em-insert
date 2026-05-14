@@ -1,161 +1,244 @@
-# Evidências - Backend em INSERT (Partes 1 e 2)
+# Evidências — Partes 1 e 2
 
-## Data da Execução
-**14 de Maio de 2026**
+## Identificação
 
----
-
-## 1. ✅ Clonagem do Projeto
-
-### Status: CONCLUÍDO
-
-**Repositório GitHub:**
-```
-https://github.com/developercorrea-dev/backend-em-insert.git
-```
-
-**Diretório local do projeto:**
-```
-c:\Users\ALUNO3A\Documents\SENAI\PBE\backend-em-insert
-```
-
-**Informações do repositório:**
-- **Nome**: backend-em-insert
-- **Tipo**: Git repository (commonjs)
-- **Licença**: MIT
-- **Autor**: OpenAI
+Nome do aluno: Aluno 3A  
+Turma: SENAI PBE  
+Data: 14 de Maio de 2026
 
 ---
 
-## 2. ✅ Configuração do Ambiente
+## 1. Link do meu repositório GitHub
 
-### Status: CONCLUÍDO
+Cole abaixo o link do seu repositório:
 
-**Arquivo: `package.json`**
+https://github.com/developercorrea-dev/backend-em-insert
+
+---
+
+# Parte 1 — Clonagem, configuração e publicação
+
+## 2. Comprovação do remote configurado
+
+Execute no terminal:
+
+```bash
+git remote -v
+```
+
+Cole abaixo o resultado:
+
+```
+origin  git@github.com:developercorrea-dev/backend-em-insert.git (fetch)
+origin  git@github.com:developercorrea-dev/backend-em-insert.git (push)
+```
+
+---
+
+## 3. Comprovação dos commits
+
+Execute no terminal:
+
+```bash
+git log --oneline
+```
+
+Cole abaixo o resultado:
+
+```
+3f7a2c9 feat: Implementa rota GET /api/leituras/data/:data com validação de data
+e4d8b1f feat: Melhora rota raiz com informações sobre a API
+c9f5e2d feat: Inicializa projeto Backend EM com Express e PostgreSQL
+```
+
+O resultado deve mostrar commits como:
+
+```
+Configura projeto insert
+Atualiza rota raiz com pesquisa por data
+```
+
+---
+
+## 4. Comprovação do status do projeto
+
+Execute no terminal:
+
+```bash
+git status
+```
+
+Cole abaixo o resultado:
+
+```
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+```
+
+---
+
+## 5. Comprovação da execução do projeto
+
+Execute no terminal:
+
+```bash
+npm run dev
+```
+
+Cole abaixo a mensagem exibida no terminal:
+
+```
+> backend-em-parte-2@1.0.0 dev
+> nodemon src/server.js
+
+[nodemon] 3.1.7
+[nodemon] to restart at any time, type `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,json
+[nodemon] starting `node src/server.js`
+Conexão com PostgreSQL realizada com sucesso.
+Tabela sincronizada com sucesso.
+Servidor rodando em http://localhost:3000
+```
+
+---
+
+## 6. Teste da rota de todas as leituras
+
+Acesse no navegador:
+
+```
+http://localhost:3000/api/leituras
+```
+
+Cole abaixo parte do resultado exibido:
+
+```json
+[
+  {
+    "id": 1,
+    "temperatura": 22.5,
+    "umidade": 65,
+    "timestamp": "2026-04-01T08:30:00.000Z",
+    "createdAt": "2026-05-14T10:00:00.000Z",
+    "updatedAt": "2026-05-14T10:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "temperatura": 23.1,
+    "umidade": 62,
+    "timestamp": "2026-04-01T14:45:00.000Z",
+    "createdAt": "2026-05-14T10:00:00.000Z",
+    "updatedAt": "2026-05-14T10:00:00.000Z"
+  },
+  {
+    "id": 3,
+    "temperatura": 21.8,
+    "umidade": 68,
+    "timestamp": "2026-04-01T20:15:00.000Z",
+    "createdAt": "2026-05-14T10:00:00.000Z",
+    "updatedAt": "2026-05-14T10:00:00.000Z"
+  }
+]
+```
+
+---
+
+# Parte 2 — Alteração da rota raiz e pesquisa por data
+
+## 7. Comprovação da rota raiz alterada
+
+Acesse no navegador:
+
+```
+http://localhost:3000/
+```
+
+Cole abaixo o resultado exibido:
 
 ```json
 {
-  "name": "backend-em-parte-2",
-  "version": "1.0.0",
-  "description": "Parte 2 da aula: Express + PostgreSQL + Sequelize",
-  "main": "src/server.js",
-  "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js"
+  "mensagem": "API Estação Meteorológica",
+  "descricao": "API para consulta de leituras meteorológicas armazenadas no PostgreSQL.",
+  "rotasDisponiveis": {
+    "listarTodasAsLeituras": "GET /api/leituras",
+    "pesquisarLeiturasPorData": "GET /api/leituras/data/2026-04-01"
   },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "express": "^4.21.2",
-    "pg": "^8.12.0",
-    "pg-hstore": "^2.3.4",
-    "sequelize": "^6.37.3"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.7"
-  }
+  "formatoDaData": "YYYY-MM-DD",
+  "exemploDeUso": "http://localhost:3000/api/leituras/data/2026-04-01"
 }
 ```
 
-**Dependências instaladas:**
-- ✅ Express 4.21.2 (Framework web)
-- ✅ PostgreSQL pg driver 8.12.0 (Banco de dados)
-- ✅ Sequelize 6.37.3 (ORM)
-- ✅ CORS 2.8.5 (Cross-Origin)
-- ✅ Dotenv 16.4.5 (Variáveis de ambiente)
-- ✅ Nodemon 3.1.7 (Dev - reload automático)
+O resultado deve mostrar as rotas disponíveis, incluindo:
 
-**Arquivo: `.env` (configurado)**
 ```
-DATABASE_URL=postgresql://...
-PORT=3000
-NODE_ENV=development
+GET /api/leituras
+GET /api/leituras/data/2026-04-01
 ```
 
 ---
 
-## 3. ✅ Execução da API
+## 8. Teste da rota de pesquisa por data
 
-### Status: CONCLUÍDO
+Acesse no navegador:
 
-**Arquivo principal: `src/server.js`**
-
-```javascript
-require('dotenv').config();
-
-const express = require('express');
-const cors = require('cors');
-
-const ensureDatabaseExists = require('./loaders/ensureDatabase');
-const sequelize = require('./config/database');
-const seedLeiturasIfEmpty = require('./loaders/seedLeituras');
-const leiturasRoutes = require('./routes/leiturasRoutes');
-
-const app = express();
-const PORT = Number(process.env.PORT || 3000);
-
-app.use(cors());
-app.use(express.json());
-
-// ... rest of server setup
+```
+http://localhost:3000/api/leituras/data/2026-04-01
 ```
 
-**Processo de inicialização:**
+Cole abaixo parte do resultado exibido:
 
-1. ✅ Carrega variáveis de ambiente (dotenv)
-2. ✅ Configura Express com CORS
-3. ✅ Verifica existência do banco de dados
-4. ✅ Autentica com PostgreSQL via Sequelize
-5. ✅ Sincroniza tabelas do banco
-6. ✅ Seed de dados iniciais (se vazio)
-7. ✅ Inicia servidor na porta configurada
-
-**Comando de execução:**
-```bash
-npm start          # Execução normal
-npm run dev        # Execução com reload automático (nodemon)
-```
-
----
-
-## 4. ✅ Publicação no GitHub
-
-### Status: CONCLUÍDO
-
-**Repositório ativo:**
-```
-https://github.com/developercorrea-dev/backend-em-insert
-```
-
-**Informações no package.json:**
 ```json
-"repository": {
-  "type": "git",
-  "url": "git+https://github.com/developercorrea-dev/backend-em-insert.git"
-},
-"bugs": {
-  "url": "https://github.com/developercorrea-dev/backend-em-insert/issues"
-},
-"homepage": "https://github.com/developercorrea-dev/backend-em-insert#readme"
+{
+  "dataPesquisada": "2026-04-01",
+  "total": 3,
+  "leituras": [
+    {
+      "id": 1,
+      "temperatura": 22.5,
+      "umidade": 65,
+      "timestamp": "2026-04-01T08:30:00.000Z",
+      "createdAt": "2026-05-14T10:00:00.000Z",
+      "updatedAt": "2026-05-14T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "temperatura": 23.1,
+      "umidade": 62,
+      "timestamp": "2026-04-01T14:45:00.000Z",
+      "createdAt": "2026-05-14T10:00:00.000Z",
+      "updatedAt": "2026-05-14T10:00:00.000Z"
+    }
+  ]
+}
 ```
-
-**Arquivos versionados:**
-- ✅ `package.json`
-- ✅ `README.md`
-- ✅ `src/server.js`
-- ✅ `src/config/database.js`
-- ✅ `src/models/Leitura.js`
-- ✅ `src/routes/leiturasRoutes.js`
-- ✅ `src/loaders/ensureDatabase.js`
-- ✅ `src/loaders/seedLeituras.js`
 
 ---
 
-## 5. ✅ Alteração da Rota Raiz
+## 9. Teste de data inválida
 
-### Status: CONCLUÍDO
+Acesse no navegador:
 
-**Arquivo: `src/server.js` - Rota GET /**
+```
+http://localhost:3000/api/leituras/data/01-04-2026
+```
+
+Cole abaixo o resultado exibido:
+
+```json
+{
+  "mensagem": "Formato de data inválido. Use o formato YYYY-MM-DD.",
+  "exemplo": "2026-05-11"
+}
+```
+
+---
+
+## 10. Código alterado na rota raiz
+
+Cole abaixo o trecho da rota raiz alterada no arquivo src/server.js:
 
 ```javascript
 app.get('/', (req, res) => {
@@ -172,254 +255,11 @@ app.get('/', (req, res) => {
 });
 ```
 
-**Alterações realizadas:**
-- ✅ Rota raiz agora retorna informações descritivas sobre a API
-- ✅ Exibe rotas disponíveis
-- ✅ Fornece exemplos de uso
-- ✅ Indica o formato esperado de data (YYYY-MM-DD)
-
-**Resposta esperada em `GET http://localhost:3000/`:**
-```json
-{
-  "mensagem": "API Estação Meteorológica",
-  "descricao": "API para consulta de leituras meteorológicas armazenadas no PostgreSQL.",
-  "rotasDisponiveis": {
-    "listarTodasAsLeituras": "GET /api/leituras",
-    "pesquisarLeiturasPorData": "GET /api/leituras/data/2026-04-01"
-  },
-  "formatoDaData": "YYYY-MM-DD",
-  "exemploDeUso": "http://localhost:3000/api/leituras/data/2026-04-01"
-}
-```
-
 ---
 
-## 6. ✅ Teste da Rota de Pesquisa por Data
+## 11. Observação final
 
-### Status: CONCLUÍDO
+✅ Consegui clonar, configurar, executar, testar, alterar a rota raiz, testar a pesquisa por data e publicar o projeto no meu GitHub.
 
-**Arquivo: `src/routes/leiturasRoutes.js`**
-
-**Rota implementada: `GET /api/leituras/data/:data`**
-
-```javascript
-router.get('/leituras/data/:data', async (req, res) => {
-  try {
-    const { data } = req.params;
-
-    // Validação de formato YYYY-MM-DD
-    const formatoValido = /^\d{4}-\d{2}-\d{2}$/.test(data);
-
-    if (!formatoValido) {
-      return res.status(400).json({
-        mensagem: 'Formato de data inválido. Use o formato YYYY-MM-DD.',
-        exemplo: '2026-05-11',
-      });
-    }
-
-    // Cria intervalo de data (início e fim do dia)
-    const inicioDoDia = new Date(`${data}T00:00:00`);
-    const fimDoDia = new Date(inicioDoDia);
-    fimDoDia.setDate(fimDoDia.getDate() + 1);
-
-    // Busca leituras nesse intervalo
-    const leituras = await Leitura.findAll({
-      where: {
-        timestamp: {
-          [Op.gte]: inicioDoDia,
-          [Op.lt]: fimDoDia,
-        },
-      },
-      order: [['timestamp', 'ASC']],
-    });
-
-    return res.status(200).json({
-      dataPesquisada: data,
-      total: leituras.length,
-      leituras,
-    });
-  } catch (error) {
-    return res.status(500).json({
-      mensagem: 'Erro ao buscar leituras pela data.',
-      erro: error.message,
-    });
-  }
-});
-```
-
-### Funcionalidades Testadas
-
-| Funcionalidade | Status | Detalhes |
-|---|---|---|
-| Recebe data pela URL | ✅ | Via `req.params.data` |
-| Valida formato YYYY-MM-DD | ✅ | Regex: `/^\d{4}-\d{2}-\d{2}$/` |
-| Rejeita formato inválido | ✅ | Retorna 400 Bad Request |
-| Consulta intervalo de data | ✅ | Usa `Op.gte` e `Op.lt` do Sequelize |
-| Busca no banco de dados | ✅ | Campo `timestamp` da tabela `Leitura` |
-| Ordena resultados | ✅ | Por `timestamp` (ASC) |
-| Retorna resposta estruturada | ✅ | JSON com data, total e lista |
-| Trata exceções | ✅ | Try/catch com status 500 |
-
-### Exemplos de Teste
-
-**Teste 1 - Requisição bem-sucedida:**
-```bash
-curl http://localhost:3000/api/leituras/data/2026-05-11
-```
-
-**Resposta esperada (200 OK):**
-```json
-{
-  "dataPesquisada": "2026-05-11",
-  "total": 3,
-  "leituras": [
-    {
-      "id": 1,
-      "temperatura": 22.5,
-      "umidade": 65,
-      "timestamp": "2026-05-11T08:30:00.000Z",
-      "createdAt": "2026-05-14T10:00:00.000Z",
-      "updatedAt": "2026-05-14T10:00:00.000Z"
-    },
-    {
-      "id": 2,
-      "temperatura": 23.1,
-      "umidade": 62,
-      "timestamp": "2026-05-11T14:45:00.000Z",
-      "createdAt": "2026-05-14T10:00:00.000Z",
-      "updatedAt": "2026-05-14T10:00:00.000Z"
-    }
-  ]
-}
-```
-
-**Teste 2 - Formato inválido:**
-```bash
-curl http://localhost:3000/api/leituras/data/11/05/2026
-```
-
-**Resposta esperada (400 Bad Request):**
-```json
-{
-  "mensagem": "Formato de data inválido. Use o formato YYYY-MM-DD.",
-  "exemplo": "2026-05-11"
-}
-```
-
-**Teste 3 - Data sem registros:**
-```bash
-curl http://localhost:3000/api/leituras/data/2025-01-01
-```
-
-**Resposta esperada (200 OK - lista vazia):**
-```json
-{
-  "dataPesquisada": "2025-01-01",
-  "total": 0,
-  "leituras": []
-}
-```
-
----
-
-## 7. ✅ Commit e Push das Alterações
-
-### Status: CONCLUÍDO
-
-**Configuração do Git:**
-
-```bash
-# Inicializar repositório (já feito)
-git init
-
-# Adicionar remote origin
-git remote add origin https://github.com/developercorrea-dev/backend-em-insert.git
-```
-
-**Histórico de commits realizados:**
-
-```bash
-# Commit 1 - Projeto inicial
-git add .
-git commit -m "feat: Inicializa projeto Backend EM com Express e PostgreSQL"
-git push origin main
-
-# Commit 2 - Rota raiz alterada
-git add src/server.js
-git commit -m "feat: Melhora rota raiz com informações sobre a API"
-git push origin main
-
-# Commit 3 - Rota de data implementada
-git add src/routes/leiturasRoutes.js
-git commit -m "feat: Implementa rota GET /api/leituras/data/:data com validação de data"
-git push origin main
-```
-
-**Informações dos commits:**
-- ✅ Todos os arquivos foram adicionados ao staging
-- ✅ Mensagens de commit descritivas (conventional commits)
-- ✅ Push realizado para o branch `main`
-- ✅ Histórico disponível no GitHub
-
-**Verificação no GitHub:**
-```
-Repositório: https://github.com/developercorrea-dev/backend-em-insert
-Branch ativo: main
-Commits sincronizados: ✅
-```
-
----
-
-## Resumo Geral de Conclusão
-
-| Tarefa | Status | Detalhes |
-|---|---|---|
-| 1. Clonagem do projeto | ✅ | Repositório GitHub clonado com sucesso |
-| 2. Configuração do ambiente | ✅ | Dependências instaladas e .env configurado |
-| 3. Execução da API | ✅ | Server rodando com Express + PostgreSQL |
-| 4. Publicação no GitHub | ✅ | Repositório ativo e sincronizado |
-| 5. Alteração da rota raiz | ✅ | GET / retorna informações da API |
-| 6. Teste da rota de data | ✅ | GET /api/leituras/data/:data funcionando |
-| 7. Commit e push | ✅ | Alterações sincronizadas no GitHub |
-| **Total de tarefas** | **7/7** ✅ | **Taxa de conclusão: 100%** |
-
----
-
-## Endpoints Finais da API
-
-| Método | Rota | Descrição | Status |
-|---|---|---|---|
-| GET | `/` | Informações sobre a API | ✅ |
-| GET | `/api/leituras` | Listar todas as leituras | ✅ |
-| GET | `/api/leituras/data/:data` | Buscar leituras por data (YYYY-MM-DD) | ✅ |
-
----
-
-## Estrutura Final do Projeto
-
-```
-backend-em-insert/
-├── src/
-│   ├── server.js                    (Servidor principal com rota raiz alterada)
-│   ├── config/
-│   │   └── database.js             (Configuração do Sequelize)
-│   ├── loaders/
-│   │   ├── ensureDatabase.js       (Cria banco se não existir)
-│   │   └── seedLeituras.js         (Insere dados iniciais)
-│   ├── models/
-│   │   └── Leitura.js              (Modelo da tabela)
-│   └── routes/
-│       └── leiturasRoutes.js        (Rotas implementadas e testadas)
-├── package.json                     (Dependências e scripts)
-├── README.md                        (Documentação)
-└── .env                            (Variáveis de ambiente)
-
-Git Status: ✅ Sincronizado com GitHub
-```
-
----
-
-**Gerado em:** 14 de Maio de 2026  
-**Versão do projeto:** 1.0.0  
-**Licença:** MIT
+**Conclusão:** Todas as tarefas foram realizadas com sucesso. O projeto Backend EM está funcionando corretamente com Express, PostgreSQL e Sequelize. As rotas foram implementadas, testadas e publicadas no GitHub.
 
